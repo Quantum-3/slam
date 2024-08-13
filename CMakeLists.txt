@@ -11,13 +11,20 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(sensor src/sensor.cpp)
+add_executable(sensor src/lidar/sensor.cpp)
+add_executable(pathPlan src/pathPlan/pathPlan.cpp)
+
 target_include_directories(sensor PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(sensor PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_include_directories(pathPlan PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
 
-install(TARGETS sensor
+target_compile_features(sensor PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(pathPlan PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+
+install(TARGETS sensor pathPlan
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

@@ -3,7 +3,7 @@
 <package format="3">
   <name>slam</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>This package is used to build a simple SLAM based robot</description>
   <maintainer email="washingtonkigan@gmail.com">wkk</maintainer>
   <license>Apache-2.0</license>
 
